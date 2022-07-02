@@ -12,7 +12,7 @@ export const fetchUserListById = createAsyncThunk("fetchUsers" , async(id)=>{
     console.log(id)
     return response
 })
-// babak jahani
+// babak jahani redux
 export const userSlice = createSlice({
     name : "users",
     initialState: {
@@ -30,16 +30,6 @@ export const userSlice = createSlice({
         },
         [fetchUserList.rejected] : (state)=>{
             state.status = 'rejected';
-        },
-        [fetchUserListById.pending] : (state)=>{
-            state.userStatus = 'pending';
-        },
-        [fetchUserListById.fulfilled] : (state , action)=>{
-            state.userStatus = 'success';
-            console.log(action.payload.data)
-        },
-        [fetchUserListById.rejected] : (state)=>{
-            state.userStatus = 'rejected';
         }
     }
 })

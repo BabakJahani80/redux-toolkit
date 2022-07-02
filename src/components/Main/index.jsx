@@ -4,6 +4,7 @@ const Main = () => {
     return ( 
         <> 
             Main salam
+            pariaafra
         </>
      );
 }

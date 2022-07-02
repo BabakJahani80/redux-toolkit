@@ -30,6 +30,16 @@ export const userSlice = createSlice({
         },
         [fetchUserList.rejected] : (state)=>{
             state.status = 'rejected';
+        },
+        [fetchUserListById.pending] : (state)=>{
+            state.userStatus = 'pending';
+        },
+        [fetchUserListById.fulfilled] : (state , action)=>{
+            state.userStatus = 'success';
+            console.log(action.payload.data)
+        },
+        [fetchUserListById.rejected] : (state)=>{
+            state.userStatus = 'rejected';
         }
     }
 })

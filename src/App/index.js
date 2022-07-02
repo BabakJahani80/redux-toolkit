@@ -2,18 +2,24 @@ import { Box, Button , ButtonBase, Typography } from '@mui/material';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { decrement, increment , statePlus} from '../components/Redux/slice';
-import { fetchUserList } from '../components/Redux/slice/userSlice';
+import { fetchUserList, fetchUserListById } from '../components/Redux/slice/userSlice';
 import useStyles from './app-style';
 
 const App = () => {
   const {number} = useSelector(state => state.counter);
+  const {id} = useSelector(state => state.counter);
   const users = useSelector(store => store.users);
   const Dispatch = useDispatch();
   const styles = useStyles();
 
   const [Time, setTime] = useState(0);
+  const [userId, serUserId] = useState(1);
     return ( 
       <>
+      <Box className={styles.type}>
+          <input type='number' onChange={(e)=>{serUserId(Number(e.target.value))}}></input>
+          <ButtonBase onClick={()=>Dispatch(fetchUserListById(userId))}>userId : {userId}</ButtonBase>
+        </Box>
         <Typography className={styles.type}>Count - {number}</Typography>
         
         <Box className={styles.type}>
@@ -41,6 +47,7 @@ const App = () => {
 
 
         <Box>
+          <Box>{users.status}</Box>
           <Box>{users.status}</Box>
         </Box>
         <Button onClick={()=>Dispatch(fetchUserList())}>Fetch Data</Button>

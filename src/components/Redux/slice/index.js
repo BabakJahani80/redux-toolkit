@@ -4,6 +4,7 @@ const CounterSlice = createSlice({
     name : 'Slicer',
     initialState :{
         number : 100,
+        id: 1
     },
     reducers:{
         increment : (state)=>{
